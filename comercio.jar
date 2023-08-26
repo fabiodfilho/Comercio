@@ -92,6 +92,38 @@ Scanner sc = new Scanner(System.in);
 			}
 			break;
 			
+		//Remover:
+		case 4: 
+			System.out.println("Digite o código do produto que deseja remover: ");
+			int codexc = sc.nextInt();
+			int indexA = CodProd.indexOf(codexc);
+			
+			if (indexA != -1) { 
+				if (Estoque.get(indexA) > 0) {
+					System.out.println("O produto " + NomeProd.get(indexA) + " ainda possui estoque, deseja mesmo excluir?");
+					
+					sc.nextLine();
+					 
+					String decs = sc.nextLine();
+					if (decs.equals("sim")) { 
+						NomeProd.remove(indexA);
+						CodProd.remove(indexA);
+						Estoque.remove(indexA);
+						System.out.println("Produto removido com sucesso!");				
+					} else {
+						System.out.println("Voltando pro menu...");
+					} break;
+				}	
+				
+				NomeProd.remove(indexA);
+				CodProd.remove(indexA);
+				Estoque.remove(indexA);
+				System.out.println("Produto removido com sucesso!");
+					
+			} else {
+				System.out.println("Código do produto inválido.");
+			}
+			break;
 		//Vender:
 		case 5:
 			System.out.println("\n" + "Para Vender um produto, digite o código do produto: ");
@@ -127,7 +159,7 @@ Scanner sc = new Scanner(System.in);
             
         default:
         	System.out.println("Saindo...");
-
+		
 		}			
 	}
 } }
