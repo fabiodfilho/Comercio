@@ -1,0 +1,134 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class comercio {
+	public static void main(String[] args) {
+
+//Scanner:
+Scanner sc = new Scanner(System.in);
+
+// Declaração de Listas:
+		ArrayList<String> NomeProd = new ArrayList<String>();
+		ArrayList<Integer> CodProd = new ArrayList<Integer>();
+		ArrayList<Integer> Estoque = new ArrayList<Integer>();
+			
+// Produtos:
+// Nomes:
+		NomeProd.add("Coleira dog Rosa");
+		NomeProd.add("Coleira");
+// CodProd:		
+		CodProd.add(1000);
+		CodProd.add(2000);
+// Estoque:			
+		Estoque.add(10);
+		Estoque.add(12);
+//Código:
+
+		//Menu:
+		
+		while (true) {
+			   System.out.println("");
+	           System.out.println("Menu:");
+	           System.out.println("1. Listar Produtos");
+	           System.out.println("2. Cadastrar Produtos");
+	           System.out.println("3. Adicionar Produtos");
+	           System.out.println("4. Remover Produtos");
+	           System.out.println("5. Vender Produtos");
+	           System.out.println("6. Sair");
+	           System.out.print("Escolha uma opção: ");
+		
+		
+		int Escolha = sc.nextInt();
+		switch (Escolha) {
+        
+		//Listar:
+		case 1:	
+			
+		for (int i = 0; i <NomeProd.size(); i++) {
+			System.out.println(NomeProd.get(i) + " (" + CodProd.get(i) + ") " + "| " + "Estoque: " + Estoque.get(i));};	
+			break;					
+
+		//Cadastrar:
+		case 2:
+			sc.nextLine();
+			
+			System.out.println("Para cadastrar um novo produto digite o nome do produto: ");
+			String novoNome = sc.nextLine();
+			
+			System.out.println("Agora digite o código do novo produto: "); 
+			int codNovProd = sc.nextInt();
+			
+			if (CodProd.contains(codNovProd)) {
+				System.out.println("Este código já existe no sistema!");
+			} else {
+				System.out.println("Por fim, digite o estoque do novo produto: ");
+				int novoEstoque = sc.nextInt();
+				
+				NomeProd.add(novoNome);
+				CodProd.add(codNovProd);
+				Estoque.add(novoEstoque);
+				
+				System.out.println("O Produto, " + novoNome + " (" + codNovProd + ") " + "| " + novoEstoque + " foi adicionado com sucesso!");
+			}
+			break;
+			
+		//Adicionar:
+		case 3:			
+			System.out.println("Digite o código do produto que deseja adicionar estoque: ");
+			int codest = sc.nextInt();
+			int indexE = CodProd.indexOf(codest);
+			
+			if (indexE != -1) {
+			
+			System.out.println("Agora digite a quantidade que deseja adicionar: ");
+			int quant = sc.nextInt();
+			
+			Estoque.set(indexE, Estoque.get(indexE) + quant);
+			
+			System.out.println("Estoque atualizado com sucesso!");
+			
+			} else {
+				System.out.println("Código do produto inválido.");
+			}
+			break;
+			
+		//Vender:
+		case 5:
+			System.out.println("\n" + "Para Vender um produto, digite o código do produto: ");
+			int codigoProduto = sc.nextInt();
+			
+			int index = CodProd.indexOf(codigoProduto);
+			
+			if (index != -1) {
+				System.out.println("Digite a quantidade a ser vendida:");
+				int quantidadeVenda = sc.nextInt();
+				
+				if (quantidadeVenda <= Estoque.get(index)) {
+					Estoque.set(index, Estoque.get(index) - quantidadeVenda);
+					System.out.println("Venda realizada com sucesso");	
+				} 
+				else {
+					System.out.println("Quantidade de venda excede o estoque disponível");
+					} 				
+			}
+			else {
+				System.out.println("Código do produto inválido.");
+				}
+				break;
+			
+			
+		//Sair:	
+		case 6:
+			System.out.println("Saindo...");
+            sc.close();
+            System.exit(0);
+            break;
+		
+            
+        default:
+        	System.out.println("Saindo...");
+                System.out.println("Saindo...");
+		
+		}			
+	}
+} }
