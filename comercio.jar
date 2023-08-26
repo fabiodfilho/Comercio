@@ -127,8 +127,7 @@ Scanner sc = new Scanner(System.in);
             
         default:
         	System.out.println("Saindo...");
-                System.out.println("Saindo...");
-		
+
 		}			
 	}
 } }
