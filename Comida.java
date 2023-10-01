@@ -15,5 +15,18 @@ public class Comida extends Produto {
     public void setSabor(String sabor) {
         this.sabor = sabor;
     }
-}
+    
+    @Override 
+    public String salvarProdutosEmArquivo() {
+        return getNome()+
+        		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | sabor:" + getSabor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
+    }
+    
+    @Override
+    public String toStringProduto(){
+        return getNome() +
+        		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | sabor:" + getSabor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
+    }
+    
+}//class comida
 

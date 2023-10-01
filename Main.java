@@ -7,13 +7,12 @@ import java.util.ArrayList;
 
 public class Main {
 	public static void main (String[] args) {
-		ArrayList<Produto> produtos = new ArrayList<Produto>();
-		Produto novoProduto = new Produto("Coleira", 2406, 200, "Mimos", 100, 150);
+		Scanner sc = new Scanner(System.in);
+		Metodos operacao = new Metodos();
+		operacao.carregarProdutosDeArquivo();
 		
-		produtos.add(novoProduto);
-		
-		
-		
+		int option = 0;
+		System.out.println();
 		
 
 		
@@ -28,7 +27,7 @@ public class Main {
 		try {
 			PrintWriter writer = new PrintWriter("arquivo.txt");
 			for (Produto a : lista) {
-				writer.write(a.getNome() + "," + a.getCodigo() + "," + a.categoria+"\n");
+				writer.write(a.getNome() + "," + a.getCodigo() + "," + a.getCategoria()+"\n");
 			}
 			writer.close();
 		} catch (FileNotFoundException e) {

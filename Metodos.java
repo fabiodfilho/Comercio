@@ -1,12 +1,23 @@
 package entrega;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class Metodos {
+	
+	//Banco de valores loja:
+	
+	public double saldo = 35000;
+
+    public void buyWithFloatingCapital(double valorCompra) {
+    	saldo -= valorCompra;
+    }
+    public void sellWithFloatingCapital(double valorVenda) {
+    	saldo += valorVenda;
+    }
+	
 	public ArrayList<Produto> produtos = new ArrayList<Produto>();
 
     public ArrayList<Produto> getProdutos() {

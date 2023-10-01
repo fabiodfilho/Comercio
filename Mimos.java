@@ -16,5 +16,18 @@ public class Mimos extends Produto {
         this.cor = cor;
     }
 
-}
+    @Override 
+    public String salvarProdutosEmArquivo() {
+        return getNome()+
+        		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | cor:" + getCor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
+    }
+    
+    @Override
+    public String toStringProduto(){
+        return getNome() +
+        		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | cor:" + getCor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
+    }
+    
+
+}//class Mimos
 

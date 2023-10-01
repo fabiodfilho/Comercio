@@ -4,7 +4,7 @@ public class Produto {
     private String nome;
     private int codigo;
     private int estoque;
-    public String categoria;
+    private String categoria;
     private int custoCompra;
     private int valorVenda;
 
@@ -88,6 +88,15 @@ public class Produto {
 	}
 	public String toString(){
 		return nome +
-				" (code.: " + estoque + " | stock: " + estoque + " | category: " + categoria + " | buy price" + custoCompra + " | sell price" + valorVenda ;
+				" (código: " + codigo + " | estoque: " + estoque + " | categoria: " + categoria + " | custo de compra:" + custoCompra + " | valor de venda:" + valorVenda + " )";
 	}
-}
+	
+	public String salvarProdutosEmArquivo() {
+        return nome+","+codigo+","+estoque+","+categoria+","+custoCompra+","+valorVenda;
+    }
+	
+	public String toStringProduto(){
+        return nome +
+        		" (código: " + codigo + " | estoque: " + estoque + " | categoria: " + categoria + " | custo de compra:" + custoCompra + " | valor de venda:" + valorVenda + " )";
+    }
+}//class produto 
