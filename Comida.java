@@ -3,12 +3,11 @@ package entrega;
 public class Comida extends Produto {
     private String sabor;
 
-    public Comida(String nome, int codigo, int custoCompra, int valorVenda, String sabor) {
-        super(nome, codigo, "Comida", custoCompra, valorVenda);
+    public Comida(String nome, int codigo, int estoque, String Categoria ,int custoCompra, int valorVenda, String sabor) {
+        super(nome, codigo, estoque, "Comida", custoCompra, valorVenda);
         this.sabor = sabor;
     }
-
-    public String getSabor() {
+	public String getSabor() {
         return sabor;
     }
 
@@ -18,9 +17,9 @@ public class Comida extends Produto {
     
     @Override 
     public String salvarProdutosEmArquivo() {
-        return getNome()+
-        		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | sabor:" + getSabor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
-    }
+        return getNome()+","+
+       		 getCodigo()+","+getEstoque()+","+getCategoria()+","+ getSabor() +","+ getCustoCompra() + "," + getValorVenda();
+        }
     
     @Override
     public String toStringProduto(){
@@ -28,5 +27,6 @@ public class Comida extends Produto {
         		" (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | sabor:" + getSabor()+ " | custo de compra:" + getCustoCompra() + " | valor de venda:" + getValorVenda() + " )";
     }
     
+   
 }//class comida
 

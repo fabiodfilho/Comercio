@@ -18,12 +18,13 @@ public class Metodos {
     	saldo += valorVenda;
     }
 	
-	public ArrayList<Produto> produtos = new ArrayList<Produto>();
+	public static ArrayList<Produto> produtos = new ArrayList<Produto>();
 
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
-
+    
+    
     public void ListAll() {
         if (produtos.isEmpty()) {
             System.out.println("\n- Nenhum produto registrado.\n");
@@ -96,10 +97,10 @@ public class Metodos {
         }
     }
     
-    public void salvarProdutosEmArquivo() {
-        try (PrintWriter writer = new PrintWriter("arquivo.txt")) {
+    public void salvarProdutosEmArquivo(ArrayList<Produto> produtos) {
+        try (PrintWriter writer = new PrintWriter("C:\\Users\\Fabio Filho\\Documents\\testejava\\arquivo.txt")) {
             for (Produto produto : produtos) {
-                writer.println(produto.saveFileString());
+                writer.println(produto.salvarProdutosEmArquivo());
             }
             System.out.println("Produtos salvos em arquivo.");
         } catch (FileNotFoundException e) {
@@ -107,36 +108,45 @@ public class Metodos {
         }
     }
 
-    public void carregarProdutosDeArquivo() {
+    public ArrayList<Produto> carregarProdutosDeArquivo() {
         ArrayList<Produto> tempArray = new ArrayList<Produto>();
-        File arquivo = new File("arquivo.txt");
-        
+        File arquivo = new File("C:\\Users\\Fabio Filho\\Documents\\testejava\\arquivo.txt");
+
         try {
             Scanner sc = new Scanner(arquivo);
             while (sc.hasNextLine()) {
-                String[] produtoArray = sc.nextLine().split(",");
-                Produto produto = null;
-                
-                // Verificar a categoria e criar o objeto apropriado
-                if (produtoArray[6].equalsIgnoreCase("Chest")) {
-                    produto = new Comida(produtoArray[0], Integer.parseInt(produtoArray[1]), Integer.parseInt(produtoArray[2]), Integer.parseInt(produtoArray[3]), produtoArray[4]);
-                } else if (produtoArray[6].equalsIgnoreCase("Legs")) {
-                    produto = new Mimos(produtoArray[0], Integer.parseInt(produtoArray[1]), Integer.parseInt(produtoArray[2]), Integer.parseInt(produtoArray[3]), produtoArray[4]);
-                }          
-                if (produto != null) {
-                    tempArray.add(produto);
+                String linha = sc.nextLine();
+                String[] produtoArray = linha.split(",");
+
+                System.out.println("Linha lida: " + linha);
+
+
+                if (produtoArray.length >= 7) {
+                    Produto produto = null;
+
+                    if (produtoArray[6].equalsIgnoreCase("Comida")) {
+                        produto = new Comida(produtoArray[0], Integer.parseInt(produtoArray[1]), Integer.parseInt(produtoArray[2]), produtoArray[3], Integer.parseInt(produtoArray[4]), Integer.parseInt(produtoArray[5]), produtoArray[6]);
+                    } else if (produtoArray[6].equalsIgnoreCase("Mimos")) {
+                        produto = new Mimos(produtoArray[0], Integer.parseInt(produtoArray[1]), Integer.parseInt(produtoArray[2]), produtoArray[3], Integer.parseInt(produtoArray[4]), Integer.parseInt(produtoArray[5]), produtoArray[6]);
+                    }
+
+                    if (produto != null) {
+                        tempArray.add(produto);
+                    }
                 }
             }
             sc.close();
-            
-            produtos = tempArray;
+
+            produtos = carregarProdutosDeArquivo();
+
             System.out.println("Produtos carregados do arquivo.");
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: arquivo.txt");
         }
-    }
+		return tempArray;
+
+    } 
 }
-    
 
     
     

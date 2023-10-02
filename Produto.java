@@ -92,8 +92,10 @@ public class Produto {
 	}
 	
 	public String salvarProdutosEmArquivo() {
-        return nome+","+codigo+","+estoque+","+categoria+","+custoCompra+","+valorVenda;
-    }
+	    return getNome() +
+	            " (código: " + getCodigo() + " | estoque: " + getEstoque() + " | categoria: " + getCategoria() + " | custo de compra: " + getCustoCompra() + " | valor de venda: " + getValorVenda() + ")";
+	}
+
 	
 	public String toStringProduto(){
         return nome +
