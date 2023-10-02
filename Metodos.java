@@ -18,7 +18,7 @@ public class Metodos {
     	saldo += valorVenda;
     }
 	
-	public static ArrayList<Produto> produtos = new ArrayList<Produto>();
+    public static ArrayList<Produto> produtos = new ArrayList<Produto>();
 
     public ArrayList<Produto> getProdutos() {
         return produtos;
@@ -26,11 +26,12 @@ public class Metodos {
     
     
     public void ListAll() {
-        if (produtos.isEmpty()) {
+    	ArrayList<Produto> produtos2 = carregarProdutosDeArquivo();
+        if (produtos2.isEmpty()) {
             System.out.println("\n- Nenhum produto registrado.\n");
         }
 
-        for (Produto produto : produtos) {
+        for (Produto produto : produtos2) {
             System.out.println(produto);
         }
     }
@@ -109,17 +110,17 @@ public class Metodos {
     }
 
     public ArrayList<Produto> carregarProdutosDeArquivo() {
-        ArrayList<Produto> tempArray = new ArrayList<Produto>();
         File arquivo = new File("C:\\Users\\Fabio Filho\\Documents\\testejava\\arquivo.txt");
+        ArrayList<Produto> tempArray = new ArrayList<Produto>();
 
         try {
             Scanner sc = new Scanner(arquivo);
+
             while (sc.hasNextLine()) {
                 String linha = sc.nextLine();
                 String[] produtoArray = linha.split(",");
 
                 System.out.println("Linha lida: " + linha);
-
 
                 if (produtoArray.length >= 7) {
                     Produto produto = null;
@@ -132,22 +133,24 @@ public class Metodos {
 
                     if (produto != null) {
                         tempArray.add(produto);
+                        
                     }
+                    
                 }
             }
             sc.close();
 
-            produtos = carregarProdutosDeArquivo();
-
+            produtos.clear(); // Limpa a lista produtos atual
+            produtos.addAll(tempArray); // Adiciona os produtos carregados à lista produtos
             System.out.println("Produtos carregados do arquivo.");
+            return tempArray;
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: arquivo.txt");
         }
 		return tempArray;
-
-    } 
+		                   
+    }
 }
-
     
     
     
