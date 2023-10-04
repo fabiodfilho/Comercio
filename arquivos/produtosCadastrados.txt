@@ -1,0 +1,2 @@
+1,Comida,Ração,30,15.0,60.0,carne,15.0
+2,Acessorios,Bebedouro ,26,15.0,18.0, vermelho
