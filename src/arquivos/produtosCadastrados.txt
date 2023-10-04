@@ -1,0 +1,3 @@
+1,Comida,Ração,30,15.0,60.0,carne,15.0
+2,Comida,bebedouro,0,15.0,20.0,carne,15.0
+3,Acessorios,coleira,26,15.0,63.0,vermelho

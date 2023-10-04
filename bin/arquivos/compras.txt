@@ -11,3 +11,5 @@ bebedouro,2,12.0,24.0
 bebedouro,2,12.0,24.0
 Bebedouro ,13,15.0,195.0
 Bebedouro ,13,15.0,195.0
+coleira,13,15.0,195.0
+coleira,13,15.0,195.0
